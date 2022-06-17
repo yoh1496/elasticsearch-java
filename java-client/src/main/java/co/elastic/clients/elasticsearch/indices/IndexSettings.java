@@ -215,7 +215,7 @@ public class IndexSettings implements JsonpSerializable {
 	private final SettingsSimilarity similarity;
 
 	@Nullable
-	private final MappingLimitSettings mappings;
+	private final MappingLimitSettings mapping;
 
 	@Nullable
 	private final SlowlogSettings indexingSlowlog;
@@ -283,7 +283,7 @@ public class IndexSettings implements JsonpSerializable {
 		this.shards = builder.shards;
 		this.queries = builder.queries;
 		this.similarity = builder.similarity;
-		this.mappings = builder.mappings;
+		this.mapping = builder.mapping;
 		this.indexingSlowlog = builder.indexingSlowlog;
 		this.indexingPressure = builder.indexingPressure;
 		this.store = builder.store;
@@ -726,11 +726,11 @@ public class IndexSettings implements JsonpSerializable {
 	/**
 	 * Enable or disable dynamic mapping for an index.
 	 * <p>
-	 * API name: {@code mappings}
+	 * API name: {@code mapping}
 	 */
 	@Nullable
-	public final MappingLimitSettings mappings() {
-		return this.mappings;
+	public final MappingLimitSettings mapping() {
+		return this.mapping;
 	}
 
 	/**
@@ -1040,9 +1040,9 @@ public class IndexSettings implements JsonpSerializable {
 			this.similarity.serialize(generator, mapper);
 
 		}
-		if (this.mappings != null) {
-			generator.writeKey("mappings");
-			this.mappings.serialize(generator, mapper);
+		if (this.mapping != null) {
+			generator.writeKey("mapping");
+			this.mapping.serialize(generator, mapper);
 
 		}
 		if (this.indexingSlowlog != null) {
@@ -1235,7 +1235,7 @@ public class IndexSettings implements JsonpSerializable {
 		private SettingsSimilarity similarity;
 
 		@Nullable
-		private MappingLimitSettings mappings;
+		private MappingLimitSettings mapping;
 
 		@Nullable
 		private SlowlogSettings indexingSlowlog;
@@ -1842,8 +1842,8 @@ public class IndexSettings implements JsonpSerializable {
 		 * <p>
 		 * API name: {@code mappings}
 		 */
-		public final Builder mappings(@Nullable MappingLimitSettings value) {
-			this.mappings = value;
+		public final Builder mapping(@Nullable MappingLimitSettings value) {
+			this.mapping = value;
 			return this;
 		}
 
@@ -1852,8 +1852,8 @@ public class IndexSettings implements JsonpSerializable {
 		 * <p>
 		 * API name: {@code mappings}
 		 */
-		public final Builder mappings(Function<MappingLimitSettings.Builder, ObjectBuilder<MappingLimitSettings>> fn) {
-			return this.mappings(fn.apply(new MappingLimitSettings.Builder()).build());
+		public final Builder mapping(Function<MappingLimitSettings.Builder, ObjectBuilder<MappingLimitSettings>> fn) {
+			return this.mapping(fn.apply(new MappingLimitSettings.Builder()).build());
 		}
 
 		/**
@@ -1994,7 +1994,7 @@ public class IndexSettings implements JsonpSerializable {
 		op.add(Builder::shards, JsonpDeserializer.integerDeserializer(), "shards");
 		op.add(Builder::queries, Queries._DESERIALIZER, "queries");
 		op.add(Builder::similarity, SettingsSimilarity._DESERIALIZER, "similarity");
-		op.add(Builder::mappings, MappingLimitSettings._DESERIALIZER, "mappings");
+		op.add(Builder::mapping, MappingLimitSettings._DESERIALIZER, "mapping");
 		op.add(Builder::indexingSlowlog, SlowlogSettings._DESERIALIZER, "indexing.slowlog");
 		op.add(Builder::indexingPressure, IndexingPressure._DESERIALIZER, "indexing_pressure");
 		op.add(Builder::store, Storage._DESERIALIZER, "store");
